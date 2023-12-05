@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Нейронные сети - RetinaScope</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+</header>
+<div class="header-container">
+    <nav class="navbar">
+        <a href="/" class="home-button">RetinaScope</a>
+        <button class="toggle-header">☰</button>
+    </nav>
+    <div class="header-content">
+        <div class="container">
+            <div class="about">
+                <div class="title">О ПРИЛОЖЕНИИ</div>
+                <p>В данном приложении используются обученные модели машинного обучения для определения отсутствия или наличия патологии сетчатки глаза на ОКТ-изображениях.</p>
+            </div>
+            <div class="authors">
+                <div class="title">РЕЗУЛЬТАТ КАЖДОЙ МОДЕЛИ</div>
+                <div class="authors-container">
+                    <div class="author">
+                        <div class="results-container">
+                            {% if result_1 %}
+                                <p><b>Стандартное обучение:</b> {{ result_1 }}</p>
+                                <p><b>Нейронное структурированное обучение:</b> {{ result_2 }}</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+    <div class="main-container">
+        <h1>Классификация с помощью нейронных сетей</h1>
+        <form action="{{ url_for('neural_networks') }}" method="post" enctype="multipart/form-data">
+            <input type="file" name="imagefile" required>
+            <button type="submit" class="main-button">Классифицировать изображение</button>
+        </form>
+        {% if result_1 %}
+            <div class="results-container">
+                <h2>Результаты классификации:</h2>
+                <img src="{{ url_for('static', filename='uploads/' ~ image_show) }}" alt="Загруженное изображение">
+            </div>
+        {% endif %}
+
+        {% if overall_result %}
+        <div class="overall-result">
+            <p class="big-result"></b>{{ overall_result }}</p>
+        </div>
+        {% endif %}
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelector('.toggle-header').addEventListener('click', function() {
+        document.querySelector('.header-content').classList.toggle('open');
+        });
+    });
+    </script>
+</body>
+<footer>
+    <p>by Denis Dzuba 2023</p>
+</footer>
+</html>

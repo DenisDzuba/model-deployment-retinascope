@@ -1,0 +1,357 @@
+/* Основные стили документа и шрифта */
+body, html {
+    height: 100%; /* Используйте 100%, чтобы учесть высоту полосы прокрутки */
+    margin: 0;
+    padding: 0;
+    font-family: 'Verdana', sans-serif;
+    background: linear-gradient(to bottom, #373341, #19161f);
+    color: white;
+    overflow-x: hidden; /* Убедитесь, что нет горизонтальной прокрутки */
+}
+
+/* Контейнер, центрирующий содержимое на странице */
+.main-container {
+    min-height: 100vh; /* По-прежнему используйте min-height для центрирования */
+    padding-top: 50px; /* Размер шапки, если есть */
+    padding-bottom: 50px; /* Размер футера, если есть */
+    box-sizing: border-box; /* Чтобы padding не добавлял высоту */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+    
+}
+
+/* Шапка с информацией и авторами */
+.header {
+    background-color: #242424;
+    color: white;
+    position: fixed;
+    top: -100%; /* Скрыта изначально */
+    left: 0;
+    width: 100%;
+    transition: top 0.3s; /* Плавное появление */
+    z-index: 10; /* Выше остального содержимого */
+    transition: max-height 0.5s ease-out; /* Добавьте плавную анимацию */
+    transform: translateY(-100%); /* Скрыть шапку за пределами экрана */
+}
+
+.header.open {
+    transform: translateY(0); /* Показать шапку */
+}
+
+.header-container {
+    width: 95%;
+    background: #242424; /* Темный фон для навигационной панели */
+    color: white;
+    padding: 10px 20px;
+}
+
+.toggle-header {
+    /* Ваши стили для кнопки */
+    cursor: pointer; /* Добавьте указатель курсора */
+}
+
+.navbar {
+    background-color: #242424;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+}
+
+.navbar.open {
+    transform: translateY(0); /* Панель отображается */
+}
+
+.nav-logo {
+    font-weight: normal;
+    font-size: 24px;
+    text-decoration: none;
+    color: white;
+}
+
+.nav-links a,
+.home-button {
+    text-decoration: none;
+    color: white;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.home-button:hover {
+    color: #4CAF50;
+}
+
+
+.navbar .home-button {
+    font-weight: normal;
+    font-size: 24px;
+    text-decoration: none;
+    color: white;
+}
+
+.navbar .toggle-header {
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.header-content {
+    display: none; /* Скрыть контент до нажатия на кнопку */
+    flex-direction: column;
+    align-items: flex-start;
+    transition: max-height 0.5s ease-out;
+    background-color: #242424; /* темный фон */
+    color: white; /* белый текст */
+    padding: 20px 0; /* вертикальные отступы */
+    font-size: 20px; /* Установите нужный размер шрифта */
+}
+
+.header-content .title,
+.header-content .name,
+.header-content p {
+    font-size: 20px; /* Или другой размер, который вам нужен */
+    color: white; /* Цвет текста */
+    margin-bottom: 1em; /* Небольшой отступ после заголовков */
+}
+
+.header-content p {
+    margin-bottom: 0.5em; /* Отступ после параграфов */
+}
+
+.header-content a {
+    color: white; /* Цвет ссылок */
+    text-decoration: none; /* Убрать подчеркивание */
+}
+
+.header-content a:hover {
+    color: #000000; /* Цвет ссылок при наведении */
+}
+
+.container {
+    display: flex;
+    justify-content: space-between; /* элементы растягиваются на всю ширину с пространством между ними */
+    max-width: 1200px; /* максимальная ширина контейнера */
+    margin: 0 auto; /* центрирование */
+}
+
+.authors-container {
+    display: flex;
+    
+    justify-content: center;
+}
+
+.author {
+
+    margin-right: 0px; /* Отступ между столбцами авторов */
+}
+
+/* Убедитесь, что последний автор не имеет отступа справа */
+
+.author:last-child {
+    margin-right: 0;
+}
+
+.about, .authors {
+    flex: 1; /* элементы занимают все доступное пространство */
+}
+
+.author {
+    margin-bottom: 0px; /* отступ между авторами */
+}
+
+h4 {
+    margin-bottom: 15px; /* отступ под заголовком */
+}
+
+a {
+    color: #4CAF50; /* цвет ссылок */
+    text-decoration: none; /* без подчеркивания */
+}
+
+a:hover {
+    text-decoration: underline; /* подчеркивание при наведении */
+}
+
+.about p, .authors p {
+    font-size: 16px; /* Установите размер шрифта для параграфов в блоках .about и .authors */
+}
+
+.about a, .authors a {
+    color: white; /* Установите цвет ссылок в блоках .about и .authors */
+}
+
+.header-content.open {
+    display: flex; /* Показать контент при активации */
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Стили для информации о приложении и авторах */
+.about-app, .authors {
+    margin-bottom: 10px;
+}
+
+/* Добавить стили для главной кнопки */
+.home-button {
+    padding: 5px 10px;
+    transition: background-color 0.3s;
+}
+
+.home-button:hover {
+    background-color: #333;
+}
+
+
+/* Стили для кнопок и иконок */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Расстояние между кнопками */
+    margin-bottom: 0; /* Убедитесь, что нет дополнительного отступа после контейнера с кнопками */
+}
+
+.button-with-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+.icon {
+    width: 250px; /* Меньший размер для иконок */
+    height: 250px;
+    margin-bottom: 10px;
+}
+
+.main-button {
+    width: 240px; /* Ширина кнопок под размер иконок */
+    padding: 10px;
+    background-color: #000000;
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    font-weight: normal;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 0;
+    
+}
+
+.main-button:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.form-row {
+    display: flex;
+    justify-content: center; /* Распределяет дочерние элементы равномерно в ряду */
+    margin-bottom: 0; /* Отступ между строками формы */
+}
+
+.form-col {
+    flex: 0.25; /* Каждый столбец занимает равное пространство */
+    padding-right: 0; /* Отступ между столбцами */
+}
+
+.form-col:last-child {
+    padding-right: 0; /* У последнего столбца нет отступа справа */
+}
+
+
+
+/* Нижний колонтитул */
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: transparent; /* или любой другой цвет, который вы хотите использовать */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Styles for larger screens */
+@media (min-width: 1024px) {
+    .icon {
+        width: 500px;
+        height: 500px;
+    }
+
+    .main-button {
+        width: 480px;
+        padding: 10px;
+    }
+
+    .buttons-container {
+        flex-direction: row;
+        justify-content: center;
+        gap: 20px;
+    }
+}
+
+/* Styles for medium screens/tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .icon {
+        width: 300px;
+        height: 300px;
+    }
+
+    .main-button {
+        width: 280px;
+        padding: 10px;
+    }
+
+    .buttons-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Styles for small screens/mobile phones */
+@media (max-width: 767px) {
+    .icon {
+        width: 200px;
+        height: 200px;
+    }
+
+    .main-button {
+        width: 180px;
+        padding: 10px;
+    }
+
+    .buttons-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-content,
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links a,
+    .home-button {
+        margin: 10px 0;
+    }
+}
+
+/* Styles for extra small screens */
+@media (max-width: 480px) {
+    .icon {
+        width: 150px;
+        height: 150px;
+    }
+
+    .main-button {
+        width: 130px;
+        padding: 8px;
+    }
+}
